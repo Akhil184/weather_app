@@ -18,7 +18,27 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Search"),
+          title:Row(
+            mainAxisAlignment:MainAxisAlignment.spaceBetween,
+        children:[
+          SizedBox(width:40.w,),
+          Text("Search"),
+          IconButton(
+              onPressed:() async {
+                weatherModel = await Repo().getWeatherByLiveLocation();
+                print(weatherModel?.main?.temp ?? "error");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Details(weatherModel:weatherModel,)),
+                );
+              },
+              icon: Icon(
+                Icons.near_me,
+                size: 30.0,
+              ),
+          ),
+          ],
+        ),
           centerTitle:true,
         ),
         body:Padding(padding:EdgeInsets.only(left:10.w,right:10.w),
@@ -59,7 +79,7 @@ class _HomeState extends State<Home> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  weatherModel = await Repo().getWeather(controller.text);
+                  weatherModel = await Repo().getWeatherByCityName(controller.text);
                   print(weatherModel?.main?.temp ?? "error");
                   Navigator.push(
                     context,
