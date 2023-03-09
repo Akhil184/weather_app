@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../model/http_call/get.dart';
+import '../http_call/get.dart';
 import '../model/model.dart';
 import 'details.dart';
 

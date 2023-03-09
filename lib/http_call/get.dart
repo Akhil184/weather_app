@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
-import '../model.dart';
+import '../model/model.dart';
 
 
 class Repo {
